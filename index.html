@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pamp Sayacı 💚</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background:
+                radial-gradient(circle at 15% 20%, rgba(255, 225, 60, 0.35), transparent 18%),
+                radial-gradient(circle at 85% 25%, rgba(150, 70, 255, 0.30), transparent 20%),
+                radial-gradient(circle at 50% 100%, rgba(80, 200, 120, 0.35), transparent 30%),
+                linear-gradient(135deg, #ff4fa3, #7c4dff, #ff7b00);
+
+            color: white;
+
+
+background-size: 400% 400%;
+animation: renkliArkaPlan 10s ease infinite;
+}
+        
+
+        .arka-plan {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .daire {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(2px);
+            opacity: 0.8;
+        }
+
+        .daire1 {
+            width: 180px;
+            height: 180px;
+            background: #7c4dff;
+            top: 8%;
+            left: 5%;
+            animation: hareket1 7s infinite alternate ease-in-out;
+        }
+
+        .daire2 {
+            width: 140px;
+            height: 140px;
+            background: #ffe44d;
+            right: 7%;
+            bottom: 12%;
+            animation: hareket2 6s infinite alternate ease-in-out;
+        }
+
+        .daire3 {
+            width: 100px;
+            height: 100px;
+            background: #fff36b;
+            top: 58%;
+            left: 13%;
+            animation: hareket3 5s infinite alternate ease-in-out;
+        }
+
+        .kutu {
+            position: relative;
+            z-index: 5;
+
+            width: min(90%, 720px);
+            padding: 50px 30px;
+
+            text-align: center;
+
+            background: rgba(8, 80, 50, 0.82);
+
+            border: 3px solid rgba(255, 255, 255, 0.35);
+            border-radius: 35px;
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.25),
+                0 0 35px rgba(255, 228, 77, 0.15);
+
+            backdrop-filter: blur(15px);
+        }
+
+        .mini-baslik {
+            display: inline-block;
+
+            padding: 8px 16px;
+            border-radius: 30px;
+
+            background: #ffe44d;
+            color: #3a2d00;
+
+            font-weight: bold;
+            font-size: 14px;
+
+            box-shadow: 0 0 20px rgba(255, 228, 77, 0.4);
+        }
+
+        h1 {
+            margin: 22px 0 10px;
+
+            font-size: clamp(42px, 9vw, 78px);
+            font-weight: 900;
+
+            background: linear-gradient(
+                90deg,
+                #fff36b,
+                #ffffff,
+                #c792ff,
+                #fff36b
+            );
+
+            background-size: 300% auto;
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            animation: renkler 5s linear infinite;
+        }
+
+        .kalpler {
+            font-size: 36px;
+            letter-spacing: 10px;
+
+            animation: kalp 1.5s infinite alternate;
+        }
+
+        .aciklama {
+            font-size: 20px;
+            margin-top: 12px;
+            color: #eaffef;
+        }
+
+        .tarih {
+            margin-top: 28px;
+
+            font-size: 17px;
+
+            color: #fff36b;
+            font-weight: bold;
+        }
+
+        #sayac {
+            margin-top: 25px;
+
+            font-size: clamp(25px, 5vw, 39px);
+
+            font-weight: 900;
+            line-height: 1.65;
+
+            color: white;
+        }
+
+        .sonsuz {
+            margin-top: 25px;
+
+            font-size: 18px;
+            color: #d9c0ff;
+        }
+
+        .muzik-alani {
+            margin-top: 30px;
+        }
+
+        button {
+            border: 0;
+
+            padding: 14px 24px;
+
+            border-radius: 30px;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            background: linear-gradient(
+                90deg,
+                #ffe44d,
+                #ffd21f
+            );
+
+            color: #284100;
+
+            box-shadow:
+                0 8px 25px rgba(255, 228, 77, 0.25);
+
+            transition: transform 0.25s;
+        }
+
+        button:hover {
+            transform: scale(1.08);
+        }
+
+        .muzik-bilgi {
+            margin-top: 10px;
+
+            font-size: 13px;
+            color: #dfffe9;
+            opacity: 0.85;
+        }
+
+        .ucan-kalp {
+            position: fixed;
+            bottom: -50px;
+
+            z-index: 1;
+
+            pointer-events: none;
+
+            animation: yukari 7s linear forwards;
+        }
+
+        @keyframes renkler {
+            0% {
+                background-position: 0% center;
+            }
+
+            100% {
+                background-position: 300% center;
+            }
+        }
+
+        @keyframes kalp {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.13);
+            }
+        }
+
+        @keyframes yukari {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-115vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes hareket1 {
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(40px, 25px);
+            }
+        }
+
+        @keyframes hareket2 {
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(-30px, -25px);
+            }
+        }
+
+        @keyframes hareket3 {
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(25px, -30px);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .kutu {
+                padding: 38px 20px;
+            }
+
+            .kalpler {
+                font-size: 28px;
+            }
+
+            .aciklama {
+                font-size: 17px;
+            }
+        }.kediler {
+    margin-top: 35px;
+}
+
+.yatak {
+    position: relative;
+
+    width: 100%;
+    max-width: 520px;
+    height: 170px;
+
+    margin: auto;
+
+    background: #7651a8;
+
+    border-radius: 35px 35px 20px 20px;
+
+    border-bottom: 12px solid #4c3175;
+
+    box-shadow:
+        0 12px 25px rgba(0,0,0,0.25);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+}
+
+.yastik {
+    position: absolute;
+
+    width: 90%;
+    height: 65px;
+
+    top: 15px;
+
+    background: #ffe96b;
+
+    border-radius: 25px;
+
+    opacity: 0.9;
+}
+
+.kedi {
+    position: relative;
+
+    z-index: 2;
+
+    width: 120px;
+    height: 120px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    transition: transform 0.2s;
+}
+
+.kedi:hover {
+    transform: translateY(-8px) scale(1.08);
+}
+
+.kedi-govde {
+    font-size: 75px;
+
+    filter: drop-shadow(
+        0 5px 3px rgba(0,0,0,0.2)
+    );
+}
+
+.isim {
+    position: absolute;
+
+    top: -8px;
+
+    padding: 4px 10px;
+
+    background: white;
+
+    color: #49315f;
+
+    border-radius: 15px;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.uyku {
+    position: absolute;
+
+    right: -5px;
+    top: 5px;
+
+    color: white;
+
+    font-size: 13px;
+
+    opacity: 0.8;
+
+    animation: uyku 2s infinite;
+}
+
+.gaz {
+    position: absolute;
+
+    right: -15px;
+    bottom: 5px;
+
+    font-size: 30px;
+
+    opacity: 0;
+
+    transform: scale(0.5);
+
+    transition: 0.2s;
+}
+
+/* Mouse kedinin üzerine gelince 💨 */
+
+.kedi:hover .gaz {
+    opacity: 1;
+
+    transform: scale(1.3);
+
+    animation: osur 0.7s infinite alternate;
+}
+
+@keyframes osur {
+
+    from {
+        transform: translateX(0) scale(1);
+        opacity: 0.5;
+    }
+
+    to {
+        transform: translateX(18px) scale(1.4);
+        opacity: 1;
+    }
+}
+
+@keyframes uyku {
+
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translateY(-8px);
+        opacity: 1;
+    }
+}@keyframes renkliArkaPlan {
+    0% { background-position: 0% 50%; }
+    25% { background-position: 100% 50%; }
+    50% { background-position: 100% 100%; }
+    75% { background-position: 0% 100%; }
+    100% { background-position: 0% 50%; }
+}
+    </style>
+</head>
+
+<body>
+
+    <div class="arka-plan">
+        <div class="daire daire1"></div>
+        <div class="daire daire2"></div>
+        <div class="daire daire3"></div>
+    </div>
+
+    <div class="kutu">
+
+        <div class="mini-baslik">
+            💚 ÖZEL SAYACIMIZ 💚
+        </div>
+
+        <div class="kalpler">
+            💜 💛 💚
+        </div>
+
+        <h1>PAMP SAYACI</h1>
+
+        <div class="aciklama">
+            Sultan & Pamp'ın birlikte geçirdiği zaman
+        </div>
+
+        <div class="tarih">
+            9 Eylül 2020'den beri ✨
+        </div>
+
+        <div id="sayac">
+            Hesaplanıyor...
+        </div>
+
+        <div class="sonsuz">
+<div class="muzik-alani">
+
+    <button id="muzikButonu" onclick="muzigiBaslat()">
+        🎵 Müziği Başlat
+    </button>
+
+</div>
+
+<audio id="muzik" loop>
+    <source src="muzik.mp3" type="audio/mpeg">
+</audio>
+            ♾️ Sayaç durmadan devam ediyor ♾️
+        </div>
+<div class="kediler">
+
+    <div class="yatak">
+        <div class="yastik"></div>
+
+        <div class="kedi siyah" onmouseenter="pirtCal()">
+            <div class="isim">Nibbu</div>
+            <div class="kedi-govde">🐈‍⬛</div>
+            <div class="uyku">Zzz...</div>
+            <div class="gaz">💨</div>
+        </div>
+
+        <div class="kedi sari" onmouseenter="pirtCal()">
+            <div class="isim">Pırt</div>
+            <div class="kedi-govde">🐈</div>
+            <div class="uyku">Zzz...</div>
+            <div class="gaz">💨</div>
+        </div>
+    </div>
+
+</div>
+
+        <div class="muzik-alani">
+
+            <button id="muzikButonu" onclick="muzigiDegistir()">
+                🎵 Müziği Başlat
+            </button>
+
+            <div class="muzik-bilgi">
+                Şarkıyı daha sonra sadece <b>muzik.mp3</b>
+                dosyasını değiştirerek değiştirebilirsin.
+            </div>
+
+        </div>
+
+    </div>
+
+        <script>
+
+        /* =========================
+           PAMP SAYACI
+        ========================= */
+
+        const baslangic = new Date("2020-09-09T00:00:00");
+
+        function sayaciGuncelle() {
+
+            const simdi = new Date();
+
+            const fark = simdi - baslangic;
+
+            const toplamSaniye = Math.floor(fark / 1000);
+
+            const gun = Math.floor(toplamSaniye / 86400);
+
+            const saat = Math.floor(
+                (toplamSaniye % 86400) / 3600
+            );
+
+            const dakika = Math.floor(
+                (toplamSaniye % 3600) / 60
+            );
+
+            const saniye = toplamSaniye % 60;
+
+            document.getElementById("sayac").innerHTML =
+                `${gun} gün<br>
+                 ${saat} saat
+                 ${dakika} dakika
+                 ${saniye} saniye`;
+        }
+
+        sayaciGuncelle();
+
+        setInterval(sayaciGuncelle, 1000);
+
+
+        /* =========================
+           MÜZİK
+        ========================= */
+
+        function muzigiDegistir() {
+
+            const muzik = document.getElementById("muzik");
+            const buton = document.getElementById("muzikButonu");
+
+            if (muzik.paused) {
+
+                muzik.play();
+
+                buton.innerHTML = "⏸️ Müziği Durdur";
+
+            } else {
+
+                muzik.pause();
+
+                buton.innerHTML = "🎵 Müziği Başlat";
+            }
+        }
+
+
+        /* =========================
+           UÇAN KALPLER
+        ========================= */
+const pirtSesi = new Audio("pirt.mp3");
+
+function pirtCal() {
+    pirtSesi.currentTime = 0;
+    pirtSesi.play();
+}
+
+        function kalpOlustur() {
+
+            const kalp = document.createElement("div");
+
+            kalp.className = "ucan-kalp";
+
+            const kalpler = [
+                "💚",
+                "💜",
+                "💛",
+                "💖",
+                "✨"
+            ];
+
+            kalp.innerHTML =
+                kalpler[
+                    Math.floor(Math.random() * kalpler.length)
+                ];
+
+            kalp.style.left =
+                Math.random() * 100 + "vw";
+
+            kalp.style.fontSize =
+                15 + Math.random() * 25 + "px";
+
+            kalp.style.animationDuration =
+                5 + Math.random() * 5 + "s";
+
+            document.body.appendChild(kalp);
+
+            setTimeout(() => {
+                kalp.remove();
+            }, 10000);
+        }
+
+        setInterval(kalpOlustur, 650);
+
+function muzigiBaslat() {
+
+    const muzik = document.getElementById("muzik");
+
+    const buton = document.getElementById("muzikButonu");
+
+    if (muzik.paused) {
+
+        muzik.play();
+
+        buton.innerHTML = "⏸️ Müziği Durdur";
+
+    } else {
+
+        muzik.pause();
+
+        buton.innerHTML = "🎵 Müziği Başlat";
+    }
+}function siteyiKapat() {
+
+    const ses = document.getElementById("uzgunSes");
+
+    ses.currentTime = 0;
+
+    ses.play().then(() => {
+
+        setTimeout(() => {
+
+            document.body.innerHTML = `
+                <div style="
+                    width:100vw;
+                    height:100vh;
+                    display:flex;
+                    justify-content:center;
+                    align-items:center;
+                    flex-direction:column;
+                    background:linear-gradient(135deg, #17202a, #34495e, #1c2833);
+                    color:#d5d8dc;
+                    font-family:Arial;
+                    text-align:center;
+                    overflow:hidden;
+                ">
+
+                    <div style="font-size:70px;">
+                        😭 😢 😭
+                    </div>
+
+                    <div style="font-size:100px;">
+                        😭
+                    </div>
+
+                    <h1>Pamp Sayacı kapandı... 😭</h1>
+
+                    <p style="font-size:22px;">
+                        Nibbular çoç mutsuz oldu pırt... 💔🐈‍⬛🐈... 💔
+                    </p>
+
+                    <div style="font-size:60px;">
+                        😢 💧 😭 💧 😢
+                    </div>
+
+                </div>
+            `;
+
+        }, 1200);
+
+    });
+
+}
+   // 🎉 PAMP AÇILIŞ ŞOVU 🎉
+const girisStil = document.createElement("style");
+
+girisStil.innerHTML = `
+
+#pampGiris {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(
+        135deg,
+        #ff69b4,
+        #ff9acb,
+        #00e5ff
+    );
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+}
+
+#geriSayim {
+    font-family: Arial, sans-serif;
+    font-size: 150px;
+    font-weight: 900;
+    color: white;
+
+    text-shadow:
+        0 0 20px #ff1493,
+        0 0 40px #ff1493;
+
+    animation: sayiBuyu 1s ease;
+}
+
+@keyframes sayiBuyu {
+
+    0% {
+        transform: scale(0.2);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+#pampGiris.sallan {
+    animation: ekranSalla 0.7s ease;
+}
+
+@keyframes ekranSalla {
+
+    0%   { transform: translate(0, 0) rotate(0deg); }
+    15%  { transform: translate(-18px, 8px) rotate(-2deg); }
+    30%  { transform: translate(18px, -8px) rotate(2deg); }
+    45%  { transform: translate(-14px, -5px) rotate(-1.5deg); }
+    60%  { transform: translate(14px, 5px) rotate(1.5deg); }
+    75%  { transform: translate(-7px, 0) rotate(-1deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+
+}
+
+#pampGiris.kaybol {
+    opacity: 0;
+    transform: scale(1.15);
+}
+
+`;
+
+document.head.appendChild(girisStil);
+function acilisKonfetisi() {
+
+    const ekran = document.createElement("div");
+
+    ekran.id = "pampGiris";
+
+    ekran.innerHTML = `
+        <div id="geriSayim">3</div>
+    `;
+
+    document.body.appendChild(ekran);
+
+    const stil = document.createElement("style");
+
+    stil.innerHTML = `
+        #pampGiris {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: linear-gradient(
+                135deg,
+                #ff4fa3,
+                #ff85c2,
+                #ff1493
+            );
+
+            transition: opacity 0.7s ease;
+        }
+
+        #geriSayim {
+            font-family: Arial, sans-serif;
+            font-size: 160px;
+            font-weight: 900;
+            color: white;
+
+            text-shadow:
+                0 0 20px #ff1493,
+                0 0 50px #ffffff;
+
+            animation: sayiBuyu 1s ease;
+        }
+
+        @keyframes sayiBuyu {
+            0% {
+                transform: scale(0.2);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        #pampGiris.sallan {
+            animation: ekranSalla 0.7s ease;
+        }
+
+        @keyframes ekranSalla {
+            0% { transform: translate(0,0) rotate(0deg); }
+            15% { transform: translate(-20px,10px) rotate(-2deg); }
+            30% { transform: translate(20px,-10px) rotate(2deg); }
+            45% { transform: translate(-15px,-5px) rotate(-1.5deg); }
+            60% { transform: translate(15px,5px) rotate(1.5deg); }
+            75% { transform: translate(-8px,0) rotate(-1deg); }
+            100% { transform: translate(0,0) rotate(0deg); }
+        }
+
+        #pampGiris.kaybol {
+            opacity: 0;
+        }
+    `;
+
+    document.head.appendChild(stil);
+
+    let sayi = 3;
+
+    const geriSayim = setInterval(() => {
+
+        sayi--;
+
+        if (sayi > 0) {
+            document.getElementById("geriSayim").textContent = sayi;
+        }
+
+        else {
+
+            clearInterval(geriSayim);
+
+            document.getElementById("geriSayim").textContent = "PAMP! 💗";
+
+            ekran.classList.add("sallan");
+
+            setTimeout(() => {
+
+                ekran.classList.add("kaybol");
+
+                setTimeout(() => {
+                    ekran.remove();
+                    stil.remove();
+                }, 700);
+
+            }, 700);
+        }
+
+    }, 1000);
+}
+
+window.addEventListener("load", acilisKonfetisi);
+document.addEventListener("mousemove", function(e) {
+
+    const iz = document.createElement("div");
+
+    const semboller = ["💚", "💜", "💛", "✨", "💖"];
+
+    iz.innerHTML =
+        semboller[Math.floor(Math.random() * semboller.length)];
+
+    iz.style.position = "fixed";
+    iz.style.left = e.clientX + "px";
+    iz.style.top = e.clientY + "px";
+
+    iz.style.pointerEvents = "none";
+    iz.style.zIndex = "9999";
+
+    iz.style.fontSize =
+        (10 + Math.random() * 12) + "px";
+
+    iz.style.transform =
+        "translate(-50%, -50%)";
+
+    iz.style.transition =
+        "all 0.8s ease-out";
+
+    document.body.appendChild(iz);
+
+    setTimeout(() => {
+
+        iz.style.transform =
+            "translate(-50%, -120%) scale(0.3)";
+
+        iz.style.opacity = "0";
+
+    }, 20);
+
+    setTimeout(() => {
+        iz.remove();
+    }, 850);
+
+});
+function nibbuyuMutluEt() {
+const dansStil = document.createElement("style");
+
+dansStil.innerHTML = `
+
+#dansEkrani {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(255, 105, 180, 0.25);
+
+    pointer-events: none;
+}
+
+.dansKedisi {
+    position: absolute;
+    font-size: 110px;
+    animation: kediDansi 1s infinite alternate ease-in-out;
+}
+
+.siyahKedi {
+    left: 30%;
+}
+
+.sariKedi {
+    right: 30%;
+    animation-delay: 0.3s;
+}
+
+.dansYazi {
+    position: absolute;
+    top: 18%;
+
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+
+    text-shadow: 0 0 15px #ff1493;
+
+    animation: yaziZiplama 0.7s infinite alternate;
+}
+
+@keyframes kediDansi {
+
+    0% {
+        transform: translateY(50px) rotate(-15deg);
+    }
+
+    50% {
+        transform: translateY(-50px) rotate(15deg);
+    }
+
+    100% {
+        transform: translateY(30px) rotate(-10deg);
+    }
+
+}
+
+@keyframes yaziZiplama {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.15);
+    }
+
+}
+
+`;
+
+document.head.appendChild(dansStil);
+
+    const dansEkrani = document.createElement("div");
+
+    dansEkrani.id = "dansEkrani";
+
+    dansEkrani.innerHTML = `
+        <div class="dansKedisi siyahKedi">🐈‍⬛</div>
+        <div class="dansKedisi sariKedi">🐈</div>
+        <div class="dansYazi">NIBBU MUTLU OLDU! 💜🐾</div>
+    `;
+
+    document.body.appendChild(dansEkrani);
+
+    setTimeout(() => {
+        dansEkrani.remove();
+    }, 5000);
+}
+    </script>
+<button onclick="nibbuyuMutluEt()">
+    🐈‍⬛ Nibbu'yu Mutlu Et 💜
+</button>
+<button id="kapatButonu" onclick="siteyiKapat()">
+    😢 Siteyi Kapat
+</button>
+
+<audio id="uzgunSes">
+    <source src="uzgun.mp3" type="audio/mpeg">
+</audio>
+
+</body>
+</html>
